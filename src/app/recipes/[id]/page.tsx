@@ -2,9 +2,9 @@ interface RecipePageProps {
     params: { id: string };
 }
 
-const recipes: Record<string, { title: string; instructions: string }> = {
-    "1": { title: "Cheap High Protein Chick-Fil-A Hack", instructions: "Mix chicken nuggets and salad" },
-    "2": { title: "5-Minute Ramen Upgrade", instructions: "Boil ramen, crack egg, add onions" },
+const recipes: Record<string, { title: string; instructions: string; cost: number}> = {
+    "1": { title: "Cheap High Protein Chick-Fil-A Hack", instructions: "Mix chicken nuggets and salad", cost:12},
+    "2": { title: "5-Minute Ramen Upgrade", instructions: "Boil ramen, crack egg, add onions", cost:5},
 };
 
 export default function RecipeDetailPage({ params }: RecipePageProps) {
@@ -29,6 +29,7 @@ export default function RecipeDetailPage({ params }: RecipePageProps) {
                 <div className="h-px bg-neutral-200 mb-6" />
                 <h2 className="text-base font-semibold text-neutral-700 mb-2">Instructions</h2>
                 <p className="text-neutral-600 leading-relaxed">{recipe.instructions}</p>
+                <p className="text-green-400 ">${recipe.cost}</p>
             </section>
         </main>
     );

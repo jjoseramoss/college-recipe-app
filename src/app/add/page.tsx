@@ -17,15 +17,14 @@ export default function AddRecipePage() {
         <main className="flex flex-col items-center justify-center min-h-[70vh] px-4">
             <section className="w-full max-w-lg bg-white/90 border border-neutral-200 rounded-xl shadow-sm p-8">
                 <h1 className="text-2xl font-bold text-neutral-900 mb-6 tracking-tight">Add a Recipe</h1>
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form className="space-y-5">
                     <div>
                         <label htmlFor="title" className="block text-sm font-medium text-neutral-700 mb-1">Title</label>
                         <input
                             id="title"
                             type="text"
                             placeholder="e.g. Easy Dorm Pasta"
-                            value={title}
-                            onChange={e => setTitle(e.target.value)}
+                            
                             className="w-full border border-neutral-200 rounded-md px-3 py-2 text-neutral-900 bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-blue-200 transition"
                             required
                         />
@@ -35,8 +34,7 @@ export default function AddRecipePage() {
                         <textarea
                             id="ingredients"
                             placeholder="List ingredients, separated by commas"
-                            value={ingredients}
-                            onChange={e => setIngredients(e.target.value)}
+                            
                             className="w-full border border-neutral-200 rounded-md px-3 py-2 text-neutral-900 bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-blue-200 transition min-h-[60px] resize-y"
                             required
                         />
@@ -46,8 +44,7 @@ export default function AddRecipePage() {
                         <textarea
                             id="instructions"
                             placeholder="Describe the steps..."
-                            value={instructions}
-                            onChange={e => setInstructions(e.target.value)}
+                            
                             className="w-full border border-neutral-200 rounded-md px-3 py-2 text-neutral-900 bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-blue-200 transition min-h-[80px] resize-y"
                             required
                         />
