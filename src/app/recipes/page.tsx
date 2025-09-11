@@ -11,6 +11,7 @@ export default function RecipePage() {
   }
 
   const idRef = useRef(1);
+  const dialogRef = useRef<HTMLDialogElement | null>(null);
 
 //   const recipes = [
 //     {
@@ -59,8 +60,9 @@ export default function RecipePage() {
     setInstructions("")
     setCost("");
 
-
-    alert(`${title} ${ingredients}  ${instructions} $ -  ${cost}`)
+    const dialog = document.getElementById("add_recipe_modal") as HTMLDialogElement | null;
+    dialog?.close();
+    // alert(`${title} ${ingredients}  ${instructions} $ -  ${cost}`)
   }
 
 
@@ -74,10 +76,7 @@ export default function RecipePage() {
           {/* Open the modal using document.getElementById('ID').showModal() method */}
           <button
             className="btn rounded-xl"
-            onClick={() => {
-                const dialog = document.getElementById("add_recipe_modal") as HTMLDialogElement | null;
-                dialog?.showModal();
-            }}
+            onClick={() =>dialogRef.current?.showModal()}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -88,10 +87,10 @@ export default function RecipePage() {
               <path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
             </svg>
           </button>
-          <dialog id="add_recipe_modal" className="modal text-white">
+          <dialog ref={dialogRef} id="add_recipe_modal" className="modal text-white">
             <div className="modal-box w-full max-w-lg bg-white/90 border border-neutral-200 rounded-xl shadow-sm p-8">
                 <h1 className="text-2xl font-bold text-neutral-900 mb-6 tracking-tight">Add a Recipe</h1>
-                <form method="dialog" onSubmit={handleSubmit} className="space-y-5 modal-backdrop">
+                <form method="submit" onSubmit={handleSubmit} className="space-y-5 modal-backdrop">
                     <div>
                         <label htmlFor="title" className="block text-sm font-medium text-neutral-700 mb-1">Title</label>
                         <input
